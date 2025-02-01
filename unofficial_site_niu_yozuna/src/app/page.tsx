@@ -1,101 +1,172 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 
-export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+gsap.registerPlugin(ScrollTrigger);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+export default function Home() {
+  const titleRef = useRef(null);
+  const videoRefs = useRef([]);
+  const liveRefs = useRef([]);
+
+  useEffect(() => {
+    gsap.fromTo(
+      titleRef.current,
+      { opacity: 0, y: -50 },
+      { opacity: 1, y: 0, duration: 1 }
+    );
+
+    videoRefs.current.forEach((el, index) => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          delay: index * 0.2,
+          scrollTrigger: { trigger: el, start: "top 90%" },
+        }
+      );
+    });
+
+    liveRefs.current.forEach((el, index) => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, x: -50 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 1,
+          delay: index * 0.2,
+          scrollTrigger: { trigger: el, start: "top 95%" },
+        }
+      );
+    });
+
+    gsap.to("#hero-section", {
+      opacity: 0,
+      scrollTrigger: {
+        trigger: "#main-content",
+        start: "top top",
+        scrub: true,
+      },
+    });
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-gradient-to-r from-red-300 to-orange-200 text-white">
+      {" "}
+      <header className="p-4 shadow-lg bg-red-700 bg-opacity-90">
+        {" "}
+        <h1 className="text-3xl font-bold text-center">
+          夜絆ニウ 非公式ファンサイト
+        </h1>
+      </header>
+      {/* Hero Image Section - Fullscreen until scroll */}
+      <section
+        id="hero-section"
+        className="top-0 left-0 w-full h-screen flex items-center justify-center z-10 relative"
+      >
+        <Image
+          src="/banner.png"
+          alt="Vtuber Banner"
+          layout="fill"
+          objectFit="cover"
+        />
+      </section>
+      <main
+        id="main-content"
+        className="relative z-20 container mx-auto px-4 py-8"
+      >
+        {/* Hero Section */}
+        <section className="text-center py-12">
+          <h2
+            ref={titleRef}
+            className="text-4xl font-extrabold mb-4 text-red-900"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+            夜に絆ぐネオポルテ一期生の警備隊長、夜絆ニウの非公式ファンサイトです！
+          </h2>
+          <p className="text-lg text-orange-900">
+            ※こちらのサイトは非公式のファンメイドのサイトであり、公式とは一切関係ありません
+          </p>
+        </section>
+
+        {/* Featured Videos */}
+        <section className="py-12">
+          <h3 className="text-2xl font-bold mb-6 text-red-800">
+            直近のライブ配信
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              [
+                "https://www.youtube.com/embed/sMtWXlk6GIc?si=XnJSAYiuxAbg3tD9",
+                "ハンバーガー屋、潰れないか…?! ＊緋月ゆい、心白てと、昏昏アリア、甘音あむ【Fast Food Simulator】【夜絆ニウ / NeoPorte (ネオポルテ) 】",
+              ],
+              [
+                "https://www.youtube.com/embed/RGolwnSnkiA?si=ZwAl1NFZu5NmIwIH",
+                "世界中で有名なポピープレイタイムのチャプター4がついに来た！【Poppy Playtime Chapter4】【夜絆ニウ / NeoPorte (ネオポルテ) 】",
+              ],
+              [
+                "https://www.youtube.com/embed/C9Q7X5vliOA?si=7E1XZlpWC78fasvY",
+                "【原神】稲妻の世界任務すすめる！ #30【夜絆ニウ / NeoPorte (ネオポルテ) 】",
+              ],
+            ].map((video, index) => (
+              <div
+                key={video[0]}
+                ref={(el) => (videoRefs.current[index] = el)}
+                className="bg-red-600 bg-opacity-80 p-4 rounded-lg shadow-lg video-box"
+              >
+                <iframe
+                  className="w-full aspect-video rounded-lg"
+                  src={video[0]}
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                ></iframe>{" "}
+                <h4 className="mt-4 text-lg font-semibold text-orange-100">
+                  {video[1]}
+                </h4>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Live Streams Section */}
+        <section className="py-12">
+          <h3 className="text-2xl font-bold mb-6">再生リスト</h3>
+          <ul className="space-y-4">
+            {[
+              "配信アーカイブベスト15 byニウ / Best 15 stream archives by Niu",
+              "動画ベスト30 byニウ / Best 30 videos by Niu",
+              "原神 / Genshin",
+            ].map((stream, index) => (
+              <li
+                key={index}
+                ref={(el) => (liveRefs.current[index] = el)}
+                className="bg-red-600 bg-opacity-80 p-4 rounded-lg shadow-lg live-box"
+              >
+                <h4 className="text-lg font-semibold">{stream}</h4>
+                <p className="text-sm text-orange-200">
+                  Scheduled for: {new Date().toLocaleDateString()}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* Footer */}
+        <footer className="py-4 text-center bg-red-700 bg-opacity-90">
+          <p className="text-sm text-orange-100">
+            © 2025 夜絆ニウ応援企画 All rights reserved.
+          </p>
+        </footer>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }
