@@ -8,9 +8,9 @@ import Image from "next/image";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
-  const titleRef = useRef(null);
-  const videoRefs = useRef([]);
-  const liveRefs = useRef([]);
+  const titleRef = useRef<HTMLHeadingElement | null>(null);
+  const videoRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const liveRefs = useRef<(HTMLLIElement | null)[]>([]);
 
   useEffect(() => {
     gsap.fromTo(
@@ -20,31 +20,35 @@ export default function Home() {
     );
 
     videoRefs.current.forEach((el, index) => {
-      gsap.fromTo(
-        el,
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          delay: index * 0.2,
-          scrollTrigger: { trigger: el, start: "top 90%" },
-        }
-      );
+      if (el) {
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            delay: index * 0.2,
+            scrollTrigger: { trigger: el, start: "top 90%" },
+          }
+        );
+      }
     });
 
     liveRefs.current.forEach((el, index) => {
-      gsap.fromTo(
-        el,
-        { opacity: 0, x: -50 },
-        {
-          opacity: 1,
-          x: 0,
-          duration: 1,
-          delay: index * 0.2,
-          scrollTrigger: { trigger: el, start: "top 95%" },
-        }
-      );
+      if (el) {
+        gsap.fromTo(
+          el,
+          { opacity: 0, x: -50 },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 1,
+            delay: index * 0.2,
+            scrollTrigger: { trigger: el, start: "top 95%" },
+          }
+        );
+      }
     });
 
     gsap.to("#hero-section", {
@@ -59,9 +63,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-red-300 to-orange-200 text-white">
-      {" "}
       <header className="p-4 shadow-lg bg-red-700 bg-opacity-90">
-        {" "}
         <h1 className="text-3xl font-bold text-center">
           夜絆ニウ 非公式ファンサイト
         </h1>
@@ -74,8 +76,8 @@ export default function Home() {
         <Image
           src="/banner.png"
           alt="Vtuber Banner"
-          layout="fill"
-          objectFit="cover"
+          fill
+          style={{ objectFit: "cover" }}
         />
       </section>
       <main
@@ -124,11 +126,11 @@ export default function Home() {
                   className="w-full aspect-video rounded-lg"
                   src={video[0]}
                   title="YouTube video player"
-                  frameborder="0"
+                  frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerpolicy="strict-origin-when-cross-origin"
-                  allowfullscreen
-                ></iframe>{" "}
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                ></iframe>
                 <h4 className="mt-4 text-lg font-semibold text-orange-100">
                   {video[1]}
                 </h4>
