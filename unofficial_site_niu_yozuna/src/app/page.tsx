@@ -119,7 +119,9 @@ export default function Home() {
             ].map((video, index) => (
               <div
                 key={video[0]}
-                ref={(el) => (videoRefs.current[index] = el)}
+                ref={(el) => {
+                  videoRefs.current[index] = el;
+                }}
                 className="bg-red-600 bg-opacity-80 p-4 rounded-lg shadow-lg video-box"
               >
                 <iframe
@@ -150,7 +152,9 @@ export default function Home() {
             ].map((stream, index) => (
               <li
                 key={index}
-                ref={(el) => (liveRefs.current[index] = el)}
+                ref={(el) => {
+                  liveRefs.current[index] = el;
+                }}
                 className="bg-red-600 bg-opacity-80 p-4 rounded-lg shadow-lg live-box"
               >
                 <h4 className="text-lg font-semibold">{stream}</h4>
