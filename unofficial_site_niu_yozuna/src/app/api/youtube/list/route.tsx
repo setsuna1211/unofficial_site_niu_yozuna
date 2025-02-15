@@ -3,6 +3,20 @@ import { NextRequest, NextResponse } from "next/server";
 const API_KEY = "AIzaSyCqvWIYoBwuZJsJkhcGgvG8b53JN7MyIEU";
 const BASE_URL = "https://www.googleapis.com/youtube/v3/search";
 
+interface VideoItem {
+  id: {
+    videoId: string;
+  };
+  snippet: {
+    title: string;
+    thumbnails: {
+      medium: {
+        url: string;
+      };
+    };
+  };
+}
+
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const channelId = searchParams.get("channelId");
@@ -24,7 +38,7 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ error: data.error.message }, { status: 500 });
     }
 
-    const videos = data.items.map((item: any) => ({
+    const videos = data.items.map((item: VideoItem) => ({
       id: item.id.videoId,
       title: item.snippet.title,
       thumbnail: item.snippet.thumbnails.medium.url,
