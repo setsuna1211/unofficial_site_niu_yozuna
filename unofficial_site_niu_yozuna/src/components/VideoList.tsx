@@ -33,7 +33,7 @@ export default function YouTubeVideos({ channelId }: YouTubeVideosProps) {
         } else {
           setError(data.error || "Failed to load videos");
         }
-      } catch (err) {
+      } catch {
         setError("An unexpected error occurred");
       } finally {
         setLoading(false);
