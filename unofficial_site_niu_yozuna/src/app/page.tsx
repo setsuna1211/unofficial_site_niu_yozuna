@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
+import YouTubeVideos from "@/components/VideoList";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -100,45 +101,9 @@ export default function Home() {
         {/* Featured Videos */}
         <section className="py-12">
           <h3 className="text-2xl font-bold mb-6 text-red-800">
-            直近のライブ配信
+            直近のライブ配信アーカイブ
           </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              [
-                "https://www.youtube.com/embed/sMtWXlk6GIc?si=XnJSAYiuxAbg3tD9",
-                "ハンバーガー屋、潰れないか…?! ＊緋月ゆい、心白てと、昏昏アリア、甘音あむ【Fast Food Simulator】【夜絆ニウ / NeoPorte (ネオポルテ) 】",
-              ],
-              [
-                "https://www.youtube.com/embed/RGolwnSnkiA?si=ZwAl1NFZu5NmIwIH",
-                "世界中で有名なポピープレイタイムのチャプター4がついに来た！【Poppy Playtime Chapter4】【夜絆ニウ / NeoPorte (ネオポルテ) 】",
-              ],
-              [
-                "https://www.youtube.com/embed/C9Q7X5vliOA?si=7E1XZlpWC78fasvY",
-                "【原神】稲妻の世界任務すすめる！ #30【夜絆ニウ / NeoPorte (ネオポルテ) 】",
-              ],
-            ].map((video, index) => (
-              <div
-                key={video[0]}
-                ref={(el) => {
-                  videoRefs.current[index] = el;
-                }}
-                className="bg-red-600 bg-opacity-80 p-4 rounded-lg shadow-lg video-box"
-              >
-                <iframe
-                  className="w-full aspect-video rounded-lg"
-                  src={video[0]}
-                  title="YouTube video player"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen
-                ></iframe>
-                <h4 className="mt-4 text-lg font-semibold text-orange-100">
-                  {video[1]}
-                </h4>
-              </div>
-            ))}
-          </div>
+          <YouTubeVideos channelId="UCZmUoMwjyuQ59sk5_7Tx07A" />
         </section>
 
         {/* Live Streams Section */}
