@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/Header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,11 +28,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ja">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <Header />
+        <main className="pt-16">{children}</main>
+                {/* Footer */}
+                <footer className="py-4 text-center bg-red-700 bg-opacity-90">
+          <p className="text-sm text-orange-100">
+            © 2025 夜絆ニウ応援企画<br />
+            ※イラスト・画像は各権利者様に帰属いたします
+          </p>
+        </footer>
       </body>
     </html>
   );

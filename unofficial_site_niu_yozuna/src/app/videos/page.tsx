@@ -70,7 +70,7 @@ export default function Home() {
         className="top-0 left-0 w-full h-screen flex items-center justify-center z-10 relative"
       >
         <Image
-          src="/banner.png"
+          src="/video_banner.png"
           alt="Vtuber Banner"
           fill
           style={{ objectFit: "cover" }}
