@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useLayoutEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -40,23 +40,30 @@ export default function YouTubeVideos({ channelId }: YouTubeVideosProps) {
       }
     }
     fetchVideos();
-
-    videoRefs.current.forEach((el, index) => {
-      if (el) {
-        gsap.fromTo(
-          el,
-          { opacity: 0, y: 30 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            delay: index * 0.2,
-            scrollTrigger: { trigger: el, start: "top 90%" },
-          }
-        );
-      }
-    });
   }, [channelId]);
+
+  // 🎯 動画データ取得後にアニメーションを適用
+  useLayoutEffect(() => {
+    if (videos.length === 0) return;
+
+    setTimeout(() => {
+      videoRefs.current.forEach((el, index) => {
+        if (el) {
+          gsap.fromTo(
+            el,
+            { opacity: 0, y: 30 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 1,
+              delay: index * 0.2,
+              scrollTrigger: { trigger: el, start: "top 90%" },
+            }
+          );
+        }
+      });
+    }, 100); // 少し遅延を入れて動画データが反映されるのを待つ
+  }, [videos]);
 
   if (loading) return <p className="text-center text-gray-500">Loading...</p>;
   if (error) return <p className="text-center text-red-500">{error}</p>;

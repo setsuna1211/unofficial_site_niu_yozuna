@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const API_KEY = "AIzaSyCqvWIYoBwuZJsJkhcGgvG8b53JN7MyIEU";
+const API_KEY = process.env.YOUTUBE_API_KEY;
 const BASE_URL = "https://www.googleapis.com/youtube/v3/search";
 
 interface VideoItem {
@@ -28,7 +28,7 @@ export async function GET(req: NextRequest) {
     );
   }
 
-  const url = `${BASE_URL}?part=snippet&channelId=${channelId}&maxResults=3&type=video&order=date&eventType=completed&key=${API_KEY}`;
+  const url = `${BASE_URL}?part=snippet&channelId=${channelId}&maxResults=6&type=video&order=date&eventType=completed&key=${API_KEY}`;
 
   try {
     const response = await fetch(url);
