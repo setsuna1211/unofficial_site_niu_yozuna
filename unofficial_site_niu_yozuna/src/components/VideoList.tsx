@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useState, useRef, useLayoutEffect } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 interface Video {
   id: string;
@@ -14,13 +13,10 @@ interface YouTubeVideosProps {
   channelId: string;
 }
 
-gsap.registerPlugin(ScrollTrigger);
-
 export default function YouTubeVideos({ channelId }: YouTubeVideosProps) {
   const [videos, setVideos] = useState<Video[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const videoRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     async function fetchVideos() {
@@ -42,41 +38,19 @@ export default function YouTubeVideos({ channelId }: YouTubeVideosProps) {
     fetchVideos();
   }, [channelId]);
 
-  // 🎯 動画データ取得後にアニメーションを適用
-  useLayoutEffect(() => {
-    if (videos.length === 0) return;
-
-    setTimeout(() => {
-      videoRefs.current.forEach((el, index) => {
-        if (el) {
-          gsap.fromTo(
-            el,
-            { opacity: 0, y: 30 },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 1,
-              delay: index * 0.2,
-              scrollTrigger: { trigger: el, start: "top 90%" },
-            }
-          );
-        }
-      });
-    }, 100); // 少し遅延を入れて動画データが反映されるのを待つ
-  }, [videos]);
-
   if (loading) return <p className="text-center text-gray-500">Loading...</p>;
   if (error) return <p className="text-center text-red-500">{error}</p>;
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {videos.map((video, index) => (
-        <div
+        <motion.div
           key={video.id}
-          ref={(el) => {
-            videoRefs.current[index] = el;
-          }}
-          className="bg-red-600 bg-opacity-80 p-4 rounded-lg shadow-lg video-box"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: index * 0.2 }}
+          viewport={{ once: true }}
+          className="bg-red-600 bg-opacity-80 p-4 rounded-lg shadow-lg"
         >
           <iframe
             className="w-full aspect-video rounded-lg"
@@ -87,7 +61,7 @@ export default function YouTubeVideos({ channelId }: YouTubeVideosProps) {
             allowFullScreen
           ></iframe>
           <h4 className="mt-2 text-white text-sm">{video.title}</h4>
-        </div>
+        </motion.div>
       ))}
     </div>
   );
