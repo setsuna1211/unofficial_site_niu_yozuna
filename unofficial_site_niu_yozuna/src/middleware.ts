@@ -3,12 +3,13 @@ import type { NextRequest } from "next/server";
 
 export function middleware(req: NextRequest) {
   const auth = req.headers.get("authorization");
+  const enableAuth = process.env.ENABLE_BASIC_AUTH === "true";
   const username = process.env.BASIC_AUTH_USER;
   const password = process.env.BASIC_AUTH_PASS;
   const expectedAuth =
     "Basic " + Buffer.from(`${username}:${password}`).toString("base64");
 
-  if (auth !== expectedAuth) {
+  if (enableAuth && auth !== expectedAuth) {
     return new NextResponse("Unauthorized", {
       status: 401,
       headers: { "WWW-Authenticate": 'Basic realm="Secure Area"' },
