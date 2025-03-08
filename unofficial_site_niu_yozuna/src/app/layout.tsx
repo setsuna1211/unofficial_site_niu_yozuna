@@ -33,7 +33,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Header />
-        <main className="pt-16">{children}</main>
+        <main className="pt-14">{children}</main>
                 {/* Footer */}
                 <footer className="py-4 text-center bg-red-700 bg-opacity-90">
           <p className="text-sm text-orange-100">

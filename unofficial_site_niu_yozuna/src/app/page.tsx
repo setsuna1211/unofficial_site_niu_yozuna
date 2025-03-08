@@ -42,12 +42,55 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.3 }}
-            viewport={{ once: false, amount: 0.5 }} // 50% 画面内に入ったら開始
+            viewport={{ once: false, amount: 0.5 }}
             className="text-lg text-orange-900"
           >
             ※こちらのサイトは非公式のファンメイドのサイトであり、公式とは一切関係ありません
           </motion.p>
         </section>
+
+        {/* Profile Section */}
+        <motion.section
+          className="py-12 flex flex-col md:flex-row justify-center items-center md:items-start text-left gap-8"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: false, amount: 0.5 }}
+        >
+          <div className="w-80 md:w-96 flex-shrink-0">
+            <Image
+              src="/niu_profile.png"
+              alt="夜絆ニウ 立ち絵"
+              width={400}
+              height={600}
+            />
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, delay: 0.3 }}
+            viewport={{ once: false, amount: 0.5 }}
+            className="flex flex-col md:text-left text-center items-center"
+          >
+            <h3 className="text-3xl font-bold text-red-900 mb-2">夜絆ニウ</h3>
+            <p className="text-sm text-orange-900 mb-2">誕生日 : 4月27日</p>
+            <p className="text-sm text-orange-900 mb-2">血液型 : O型</p>
+            <p className="text-sm text-orange-900 mb-2">身長 : 142.7cm</p>
+            <p className="text-sm text-orange-900 mb-2">
+              好きな食べ物 : 焼き鳥、サーモン、家系ラーメン
+            </p>
+            <p className="text-base text-orange-900 leading-relaxed text-center">
+              ネオポルテの多分かわいい担当！
+              <br />
+              ちなみによ「づ」なにうである。
+              <br />
+              配信内容はゲーム、時々歌枠とASMRと実写(料理が多い)。
+              <br />
+              とても表情豊か！それはもう！
+            </p>
+          </motion.div>
+        </motion.section>
 
         {/* Twitter Timeline Section */}
         <motion.section
@@ -55,8 +98,8 @@ export default function Home() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          viewport={{ once: false, amount: 0.5 }} // 50% 画面内に入ったら開始
-          >
+          viewport={{ once: false, amount: 0.5 }}
+        >
           <TwitterTimeline target="niu_yozuna?ref_src=twsrc%5Etfw" />
         </motion.section>
       </main>
