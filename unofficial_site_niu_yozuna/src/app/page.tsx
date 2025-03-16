@@ -16,12 +16,20 @@ export default function Home() {
         style={{ opacity: heroOpacity }}
         className="top-0 left-0 w-full h-screen flex items-center justify-center z-10 relative"
       >
-        <Image
-          src="/banner.png"
-          alt="Vtuber Banner"
-          fill
-          style={{ objectFit: "cover" }}
-        />
+        {/* Image with fade-in on scroll */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          className="w-full h-full"
+        >
+          <Image
+            src="/banner.png"
+            alt="Vtuber Banner"
+            fill
+            style={{ objectFit: "cover" }}
+          />
+        </motion.div>
       </motion.section>
 
       <main
@@ -31,18 +39,19 @@ export default function Home() {
         {/* Hero Section */}
         <section className="text-center py-12">
           <motion.h2
-            initial={{ opacity: 0, y: -50 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -100 }}
+            whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
+            viewport={{ once: true, amount: 0.5 }}
             className="text-4xl font-extrabold mb-4 text-red-900"
           >
             夜に絆ぐネオポルテ一期生の警備隊長、夜絆ニウの非公式ファンサイトです！
           </motion.h2>
           <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.3 }}
-            viewport={{ once: false, amount: 0.5 }}
+            initial={{ opacity: 0, x: -100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1 }}
+            viewport={{ once: true, amount: 0.5 }}
             className="text-lg text-orange-900"
           >
             ※こちらのサイトは非公式のファンメイドのサイトであり、公式とは一切関係ありません
@@ -55,22 +64,28 @@ export default function Home() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          viewport={{ once: false, amount: 0.5 }}
+          viewport={{ once: true, amount: 0.5 }}
         >
           <div className="w-80 md:w-96 flex-shrink-0">
-            <Image
-              src="/niu_profile.png"
-              alt="夜絆ニウ 立ち絵"
-              width={400}
-              height={600}
-            />
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1 }}
+            >
+              <Image
+                src="/niu_profile.png"
+                alt="夜絆ニウ 立ち絵"
+                width={400}
+                height={600}
+              />
+            </motion.div>
           </div>
 
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.3 }}
-            viewport={{ once: false, amount: 0.5 }}
+            viewport={{ once: true, amount: 0.5 }}
             className="flex flex-col md:text-left text-center items-center"
           >
             <h3 className="text-3xl font-bold text-red-900 mb-2">夜絆ニウ</h3>
@@ -98,7 +113,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          viewport={{ once: false, amount: 0.5 }}
+          viewport={{ once: true, amount: 0.5 }}
         >
           <TwitterTimeline target="niu_yozuna?ref_src=twsrc%5Etfw" />
         </motion.section>
