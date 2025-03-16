@@ -1,9 +1,6 @@
 "use client";
 
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { motion } from "framer-motion";
 
 export default function Home() {
   return (
@@ -14,23 +11,78 @@ export default function Home() {
       >
         {/* Hero Section */}
         <section className="text-center py-12">
-          <h2 className="text-4xl font-extrabold mb-4 text-red-900">
+          <motion.h2
+            className="text-4xl font-extrabold mb-4 text-red-900"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
             連絡先等
-          </h2>
-          <h3 className="text-2xl font-bold text-red-800">企画・運営</h3>
-          <p className="text-lg text-orange-900">
+          </motion.h2>
+          <motion.h3
+            className="text-2xl font-bold text-red-800"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.3 }}
+          >
+            企画・運営
+          </motion.h3>
+          <motion.p
+            className="text-lg text-orange-900"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.5 }}
+          >
             夜絆ニウ応援企画：@jjbgNaUvJF40976
-          </p>
-          <h3 className="text-2xl font-bold mt-6 text-red-800">技術提供</h3>
-          <p className="text-lg text-orange-900">
+          </motion.p>
+          <motion.h3
+            className="text-2xl font-bold mt-6 text-red-800"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.7 }}
+          >
+            技術提供
+          </motion.h3>
+          <motion.p
+            className="text-lg text-orange-900"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1 }}
+          >
             セツナ@がんばらない：@SETSUNA1211
-          </p>
-          <h3 className="text-2xl font-bold mt-6 text-red-800">
+          </motion.p>
+          <motion.h3
+            className="text-2xl font-bold mt-6 text-red-800"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1.3 }}
+          >
             応援広告広報等
-          </h3>
-          <p className="text-lg text-orange-900">るーろーはん：@humhum0808</p>
-          <h3 className="text-2xl font-bold mt-6 text-red-800">イラスト提供</h3>
-          <p className="text-lg text-orange-900">ゆゆん：@fokachya_y</p>
+          </motion.h3>
+          <motion.p
+            className="text-lg text-orange-900"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1.5 }}
+          >
+            るーろーはん：@humhum0808
+          </motion.p>
+          <motion.h3
+            className="text-2xl font-bold mt-6 text-red-800"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1.8 }}
+          >
+            イラスト提供
+          </motion.h3>
+          <motion.p
+            className="text-lg text-orange-900"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 2 }}
+          >
+            ゆゆん：@fokachya_y
+          </motion.p>
         </section>
       </main>
     </div>
