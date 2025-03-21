@@ -49,7 +49,7 @@ export default function YouTubePlayLists() {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
-          <h4 className="mt-2 text-white text-sm">{playList.title}</h4>
+          <h4 className="mt-2 text-sm">{playList.title}</h4>
         </motion.div>
       ))}
     </div>

@@ -5,7 +5,7 @@ import path from "path";
 export async function GET() {
   try {
     const imagesDir = path.join(process.cwd(), "public/gallery");
-    const files = fs.readdirSync(imagesDir);
+    const files = fs.readdirSync(imagesDir).sort();
 
     const images = files
       .filter((file) => /\.(jpg|jpeg|png|gif|webp)$/i.test(file))

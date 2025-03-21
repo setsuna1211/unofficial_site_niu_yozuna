@@ -51,21 +51,29 @@ export default function Home() {
                 className="relative group"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{ scale: 1.1 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true, amount: 0.5 }}
               >
-                <div className="flex justify-center items-center w-full h-full">
-                  <Image
-                    src={image.src}
-                    alt={image.title}
-                    width={300}
-                    height={200}
-                    className="rounded-lg cursor-pointer object-cover"
-                    onClick={() => setSelectedImage(image)}
-                  />
-                </div>
-                <p className="mt-2 font-bold">{image.title}</p>
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.2 }}
+                  viewport={{ once: true, amount: 0.5 }}
+                >
+                  <div className="flex justify-center items-center w-full h-full">
+                    <Image
+                      src={image.src}
+                      alt={image.title}
+                      width={300}
+                      height={200}
+                      className="rounded-lg cursor-pointer object-cover"
+                      onClick={() => setSelectedImage(image)}
+                    />
+                  </div>
+                  <p className="mt-2 font-bold">{image.title}</p>
+                </motion.div>
               </motion.div>
             ))}
           </div>
