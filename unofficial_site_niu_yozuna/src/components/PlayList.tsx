@@ -8,7 +8,6 @@ interface PlayList {
 }
 
 export default function YouTubePlayLists() {
-  // 固定の動画データ
   const playLists: PlayList[] = [
     {
       id: "PLoDhHQrYy1OUrsyKy8DTBld7k7Do-VuUR",
@@ -41,7 +40,7 @@ export default function YouTubePlayLists() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: index * 0.2 }}
           viewport={{ once: true }}
-          className="bg-red-600 bg-opacity-80 p-4 rounded-lg shadow-lg"
+          className="bg-panel p-4 rounded-lg shadow-lg"
         >
           <iframe
             className="w-full aspect-video rounded-lg"

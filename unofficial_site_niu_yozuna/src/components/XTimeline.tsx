@@ -28,11 +28,10 @@ export default function TwitterTimeline({ target }: TwitterTimelineProps) {
 
   return (
     <div className="flex justify-center my-4">
-      <div ref={timelineRef} className="max-w-[500px] w-full">
+      <div ref={timelineRef} className="max-w-xl w-full">
         <a
           className="twitter-timeline"
-          data-theme="light"
-          data-width="500"
+          data-theme="dark"
           data-height="600"
           href={`https://twitter.com/${target}`}
         >
@@ -40,7 +39,6 @@ export default function TwitterTimeline({ target }: TwitterTimelineProps) {
         </a>
       </div>
 
-      {/* Twitter の埋め込みスクリプトをロード */}
       <Script
         src="https://platform.twitter.com/widgets.js"
         strategy="lazyOnload"

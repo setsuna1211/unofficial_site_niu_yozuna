@@ -8,7 +8,7 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-red-700 bg-opacity-90 p-4 shadow-lg z-50">
+    <header className="fixed top-0 left-0 w-full bg-panel p-4 shadow-lg z-50">
       <div className="container mx-auto flex justify-between items-center">
         <nav className="hidden md:block">
           <ul className="flex space-x-6">
@@ -23,8 +23,8 @@ export default function Header() {
               </Link>
             </li>
             <li>
-              <Link href="/message" className="text-white hover:underline">
-                寄せ書き
+              <Link href="/gallery" className="text-white hover:underline">
+              ギャラリー
               </Link>
             </li>
             <li>
@@ -45,7 +45,7 @@ export default function Header() {
       </div>
 
       {isOpen && (
-        <nav className="md:hidden bg-red-800 bg-opacity-95 p-4 absolute top-full left-0 w-full">
+        <nav className="md:hidden bg-panel p-4 absolute top-full left-0 w-full">
           <ul className="space-y-4">
             <li>
               <Link
@@ -67,11 +67,11 @@ export default function Header() {
             </li>
             <li>
               <Link
-                href="/message"
+                href="/gallery"
                 className="block text-white text-center"
                 onClick={() => setIsOpen(false)}
               >
-                寄せ書き
+                ギャラリー
               </Link>
             </li>
             <li>

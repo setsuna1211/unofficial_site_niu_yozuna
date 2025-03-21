@@ -10,18 +10,15 @@ export default function Home() {
   const videoRefs = useRef<(HTMLDivElement | null)[]>([]);
   const liveRefs = useRef<(HTMLLIElement | null)[]>([]);
 
-  // animation control hooks
   const controls = useAnimation();
 
   useEffect(() => {
-    // Title fade-in
     controls.start({
       opacity: 1,
       y: 0,
       transition: { duration: 1 },
     });
 
-    // Video section animation
     videoRefs.current.forEach((el, index) => {
       if (el) {
         controls.start({
@@ -32,7 +29,6 @@ export default function Home() {
       }
     });
 
-    // Live section animation
     liveRefs.current.forEach((el, index) => {
       if (el) {
         controls.start({
@@ -45,19 +41,26 @@ export default function Home() {
   }, [controls]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-red-300 to-orange-200 text-white">
+    <div className="min-h-screen">
       <main
         id="main-content"
         className="relative z-20 container mx-auto px-4 py-8"
       >
         <motion.section
           className="py-12 flex justify-center items-center"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}
         >
-          <div className="w-full md:w-2/3 h-auto bg-red-600 bg-opacity-80 p-4 rounded-lg shadow-lg">
-            <h3 className="text-2xl font-bold mb-4 text-white">予定表 (※サムネイルより取得)</h3>
+          <motion.div
+            className="w-full md:w-2/3 h-auto bg-panel p-4 rounded-lg shadow-lg"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
+            <h3 className="text-2xl font-bold mb-4 text-white">
+              予定表 (※サムネイルより取得)
+            </h3>
             <div className="flex justify-center items-center">
               <Image
                 src={`https://img.youtube.com/vi/ZWUNKY0pFYU/maxresdefault.jpg?t=${Date.now()}`}
@@ -67,12 +70,12 @@ export default function Home() {
                 className="rounded-lg"
               />
             </div>
-          </div>
+          </motion.div>
         </motion.section>
-        {/* Featured Videos */}
+
         <section className="py-12">
           <motion.h3
-            className="text-2xl font-bold mb-6 text-red-800"
+            className="text-2xl font-bold mb-6"
             initial={{ opacity: 0, x: -100 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
@@ -83,10 +86,9 @@ export default function Home() {
           <YouTubeVideos channelId="UCZmUoMwjyuQ59sk5_7Tx07A" />
         </section>
 
-        {/* Live Streams Section */}
         <section className="py-12">
           <motion.h3
-            className="text-2xl font-bold text-red-800"
+            className="text-2xl font-bold"
             initial={{ opacity: 0, x: -100 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
@@ -95,7 +97,7 @@ export default function Home() {
             オススメ再生リスト
           </motion.h3>
           <motion.p
-            className="text-sm mb-6 text-orange-900"
+            className="text-sm mb-6"
             initial={{ opacity: 0, x: -100 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}

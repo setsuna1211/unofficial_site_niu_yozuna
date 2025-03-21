@@ -19,3 +19,21 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@layer utilities {
+  .bg-main {
+    @apply bg-gradient-to-r from-[#6E5BAA] to-[#9C89DB];
+  }
+  .bg-panel {
+    @apply bg-[#1A172D] bg-opacity-90;
+  }
+
+  .text-main {
+    @apply text-[#E4D8FC];
+  }
+
+  .border-glow {
+    border: 1px solid #FFD6FA;
+    box-shadow: 0 0 10px #FFD6FA;
+  }
+}

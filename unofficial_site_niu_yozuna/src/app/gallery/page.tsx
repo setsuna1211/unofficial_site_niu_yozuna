@@ -16,7 +16,7 @@ export default function Home() {
   useEffect(() => {
     async function fetchImages() {
       try {
-        const res = await fetch("/api/images/message");
+        const res = await fetch("/api/images/gallery");
         const data = await res.json();
         if (res.ok) {
           setImages(data.images);
@@ -31,11 +31,11 @@ export default function Home() {
   const closeModal = () => setSelectedImage(null);
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-red-300 to-orange-200 text-white">
+    <div className="min-h-screen">
       <main className="relative z-20 container mx-auto px-4 py-8">
         <section className="text-center py-12">
           <motion.h2
-            className="text-4xl font-extrabold mb-4 text-red-900"
+            className="text-4xl font-extrabold mb-4"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
@@ -65,7 +65,7 @@ export default function Home() {
                     onClick={() => setSelectedImage(image)}
                   />
                 </div>
-                <p className="mt-2 text-red-900 font-bold">{image.title}</p>
+                <p className="mt-2 font-bold">{image.title}</p>
               </motion.div>
             ))}
           </div>
@@ -93,7 +93,7 @@ export default function Home() {
                   height={500}
                   className="object-contain"
                 />
-                <p className="mt-4 text-center text-white text-xl font-bold">
+                <p className="mt-4 text-center text-xl font-bold">
                   {selectedImage.title}
                 </p>
               </motion.div>

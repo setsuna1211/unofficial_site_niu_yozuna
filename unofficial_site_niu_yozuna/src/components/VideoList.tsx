@@ -38,7 +38,7 @@ export default function YouTubeVideos({ channelId }: YouTubeVideosProps) {
     fetchVideos();
   }, [channelId]);
 
-  if (loading) return <p className="text-center text-gray-500">Loading...</p>;
+  if (loading) return <p className="text-center">Loading...</p>;
   if (error) return <p className="text-center text-red-500">{error}</p>;
 
   return (
@@ -50,7 +50,7 @@ export default function YouTubeVideos({ channelId }: YouTubeVideosProps) {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: index * 0.2 }}
           viewport={{ once: true }}
-          className="bg-red-600 bg-opacity-80 p-4 rounded-lg shadow-lg"
+          className="bg-panel p-4 rounded-lg shadow-lg"
         >
           <iframe
             className="w-full aspect-video rounded-lg"
@@ -59,7 +59,7 @@ export default function YouTubeVideos({ channelId }: YouTubeVideosProps) {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
-          <h4 className="mt-2 text-white text-sm">{video.title}</h4>
+          <h4 className="mt-2 text-sm">{video.title}</h4>
         </motion.div>
       ))}
     </div>

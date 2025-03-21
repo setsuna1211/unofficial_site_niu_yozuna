@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-r from-red-300 to-orange-200 text-white">
+    <div className="min-h-screen">
       <main
         id="main-content"
         className="relative z-20 container mx-auto px-4 py-8"
@@ -12,7 +12,7 @@ export default function Home() {
         {/* Hero Section */}
         <section className="text-center py-12">
           <motion.h2
-            className="text-4xl font-extrabold mb-4 text-red-900"
+            className="text-4xl font-extrabold mb-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
@@ -20,7 +20,7 @@ export default function Home() {
             連絡先等
           </motion.h2>
           <motion.h3
-            className="text-2xl font-bold text-red-800"
+            className="text-2xl font-bold"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.3 }}
@@ -28,7 +28,7 @@ export default function Home() {
             企画・運営
           </motion.h3>
           <motion.p
-            className="text-lg text-orange-900"
+            className="text-lg"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.5 }}
@@ -36,7 +36,7 @@ export default function Home() {
             夜絆ニウ応援企画：@jjbgNaUvJF40976
           </motion.p>
           <motion.h3
-            className="text-2xl font-bold mt-6 text-red-800"
+            className="text-2xl font-bold mt-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.7 }}
@@ -44,7 +44,7 @@ export default function Home() {
             技術提供
           </motion.h3>
           <motion.p
-            className="text-lg text-orange-900"
+            className="text-lg"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1 }}
@@ -52,7 +52,7 @@ export default function Home() {
             セツナ@がんばらない：@SETSUNA1211
           </motion.p>
           <motion.h3
-            className="text-2xl font-bold mt-6 text-red-800"
+            className="text-2xl font-bold mt-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1.3 }}
@@ -60,7 +60,7 @@ export default function Home() {
             応援広告広報等
           </motion.h3>
           <motion.p
-            className="text-lg text-orange-900"
+            className="text-lg"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1.5 }}
@@ -68,7 +68,7 @@ export default function Home() {
             るーろーはん：@humhum0808
           </motion.p>
           <motion.h3
-            className="text-2xl font-bold mt-6 text-red-800"
+            className="text-2xl font-bold mt-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1.8 }}
@@ -76,7 +76,7 @@ export default function Home() {
             イラスト提供
           </motion.h3>
           <motion.p
-            className="text-lg text-orange-900"
+            className="text-lg"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 2 }}

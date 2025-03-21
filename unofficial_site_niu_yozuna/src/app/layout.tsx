@@ -20,13 +20,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className={`${NiuSiteFont.className}`}>
+      <body className={`${NiuSiteFont.className} bg-main text-main`}>
         <Header />
         <main>{children}</main>
         {/* Footer */}
-        <footer className="py-4 text-center bg-red-700 bg-opacity-90">
-          <p className="text-sm text-orange-100">
+        <footer className="py-4 text-center bg-panel">
+          <p className="text-sm text-white">
             © 2025 夜絆ニウ応援企画
+            <br />
+            ※こちらのサイトは非公式のファンメイドのサイトであり、公式とは一切関係ありません
             <br />
             ※イラスト・画像は各権利者様に帰属いたします
           </p>

@@ -4,13 +4,13 @@ import path from "path";
 
 export async function GET() {
   try {
-    const imagesDir = path.join(process.cwd(), "public/message");
+    const imagesDir = path.join(process.cwd(), "public/gallery");
     const files = fs.readdirSync(imagesDir);
 
     const images = files
       .filter((file) => /\.(jpg|jpeg|png|gif|webp)$/i.test(file))
       .map((file) => ({
-        src: `/message/${file}`,
+        src: `/gallery/${file}`,
         title: path.basename(file, path.extname(file)),
       }));
 
