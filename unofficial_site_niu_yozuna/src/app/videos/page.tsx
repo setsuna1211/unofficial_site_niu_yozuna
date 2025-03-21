@@ -58,13 +58,13 @@ export default function Home() {
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
           >
-            <h3 className="text-2xl font-bold mb-4 text-white">
+            <h3 className="text-2xl font-bold mb-4">
               予定表 (※サムネイルより取得)
             </h3>
             <div className="flex justify-center items-center">
               <Image
                 src={`https://img.youtube.com/vi/ZWUNKY0pFYU/maxresdefault.jpg?t=${Date.now()}`}
-                alt="YouTube Live Thumbnail"
+                alt="予定表"
                 width={1280}
                 height={720}
                 className="rounded-lg"

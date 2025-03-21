@@ -23,7 +23,7 @@ export default function Home() {
         >
           <Image
             src="/banner.png"
-            alt="Top Banner"
+            alt="トップ画像"
             fill
             style={{ objectFit: "cover" }}
           />
