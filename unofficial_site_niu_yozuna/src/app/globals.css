@@ -22,16 +22,16 @@ body {
 
 @layer utilities {
   .bg-main {
-    @apply bg-gradient-to-r from-[#CA80CB] to-[#E757AE];
-    /*@apply bg-gradient-to-r from-[#6E5BAA] to-[#9C89DB];*/
+    /*@apply bg-gradient-to-r from-[#CA80CB] to-[#E757AE];*/
+    @apply bg-gradient-to-r from-[#6E5BAA] to-[#9C89DB];
   }
   .bg-panel {
-    @apply bg-[#825F9F] bg-opacity-90;
-    /*@apply bg-[#1A172D] bg-opacity-90;*/
+    /*@apply bg-[#825F9F] bg-opacity-90;*/
+    @apply bg-[#1A172D] bg-opacity-90;
   }
 
   .text-main {
-    @apply text-[#E5D1AC];
-    /*@apply text-[#E4D8FC];*/
+    /*@apply text-[#E5D1AC];*/
+    @apply text-[#E4D8FC];
   }
 }

@@ -10,13 +10,17 @@ interface ImageData {
 }
 
 export default function Home() {
-  const [images, setImages] = useState<ImageData[]>([]);
+  const [messageImages, setMessageImages] = useState<ImageData[]>([]);
+  const [galleryImages, setGalleryImages] = useState<ImageData[]>([]);
   const [selectedImage, setSelectedImage] = useState<ImageData | null>(null);
 
   useEffect(() => {
-    async function fetchImages() {
+    async function fetchImages(
+      url: string,
+      setImages: (images: ImageData[]) => void
+    ) {
       try {
-        const res = await fetch("/api/images/gallery");
+        const res = await fetch(url);
         const data = await res.json();
         if (res.ok) {
           setImages(data.images);
@@ -25,9 +29,9 @@ export default function Home() {
         console.error("Failed to load images", error);
       }
     }
-    fetchImages();
+    fetchImages("/api/images/message", setMessageImages);
+    fetchImages("/api/images/gallery", setGalleryImages);
   }, []);
-
   const closeModal = () => setSelectedImage(null);
 
   return (
@@ -41,11 +45,53 @@ export default function Home() {
             transition={{ duration: 1 }}
             viewport={{ once: true, amount: 0.5 }}
           >
+            寄せ書き
+          </motion.h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {messageImages.map((image, index) => (
+              <motion.div
+                key={index}
+                className="relative group"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true, amount: 0.5 }}
+              >
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.2 }}
+                  viewport={{ once: true, amount: 0.5 }}
+                >
+                  <div className="flex justify-center items-center w-full h-full">
+                    <Image
+                      src={image.src}
+                      alt={image.title}
+                      width={300}
+                      height={200}
+                      className="rounded-lg cursor-pointer object-cover"
+                      onClick={() => setSelectedImage(image)}
+                    />
+                  </div>
+                  <p className="mt-2 font-bold">{image.title}</p>
+                </motion.div>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.h2
+            className="text-4xl font-extrabold mb-4"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            viewport={{ once: true, amount: 0.5 }}
+          >
             フォトギャラリー
           </motion.h2>
-
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {images.map((image, index) => (
+            {galleryImages.map((image, index) => (
               <motion.div
                 key={index}
                 className="relative group"
@@ -99,7 +145,7 @@ export default function Home() {
                   alt={selectedImage.title}
                   width={900}
                   height={500}
-                  className="object-contain"
+                  className="w-auto h-auto max-w-full max-h-[80vh] object-contain"
                 />
                 <p className="mt-4 text-center text-xl font-bold">
                   {selectedImage.title}
