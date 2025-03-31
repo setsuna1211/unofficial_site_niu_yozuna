@@ -100,6 +100,58 @@ export default function Home() {
               <br />
               とても表情豊か！
             </p>
+            <div className="flex flex-wrap justify-center gap-4 mt-4">
+              <motion.a
+                href="https://youtube.com/@niu_yozuna"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="px-4 py-2 bg-red-600 rounded-lg font-bold shadow-md"
+              >
+                YouTube
+              </motion.a>
+              <motion.a
+                href="https://x.com/niu_yozuna"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="px-4 py-2 bg-black rounded-lg font-bold shadow-md"
+              >
+                X（メイン）
+              </motion.a>
+              <motion.a
+                href="https://x.com/niubie_yozuna"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="px-4 py-2 bg-black rounded-lg font-bold shadow-md"
+              >
+                X（サブ）
+              </motion.a>
+              <motion.a
+                href="https://www.twitch.tv/niu_yozuna"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="px-4 py-2 bg-purple-500 rounded-lg font-bold shadow-md"
+              >
+                Twitch
+              </motion.a>
+              <motion.a
+                href="https://www.tiktok.com/@niu_yozuna"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="px-4 py-2 bg-gray-900 rounded-lg font-bold shadow-md"
+              >
+                TikTok
+              </motion.a>
+            </div>
           </motion.div>
         </motion.section>
 
