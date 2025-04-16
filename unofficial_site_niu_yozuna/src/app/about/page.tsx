@@ -17,7 +17,7 @@ export default function Home() {
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
           >
-            連絡先等
+            連絡先・ご協力いただいた方々(敬称略)
           </motion.h2>
           <motion.h3
             className="text-2xl font-bold"
@@ -33,7 +33,7 @@ export default function Home() {
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.5 }}
           >
-            夜絆ニウ応援企画：@jjbgNaUvJF40976
+            夜絆ニウ応援企画(@jjbgNaUvJF40976)
           </motion.p>
           <motion.h3
             className="text-2xl font-bold mt-6"
@@ -49,7 +49,7 @@ export default function Home() {
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1 }}
           >
-            セツナ@がんばらない：@SETSUNA1211
+            セツナ@がんばらない(@SETSUNA1211)
           </motion.p>
           <motion.h3
             className="text-2xl font-bold mt-6"
@@ -65,7 +65,7 @@ export default function Home() {
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1.5 }}
           >
-            るーろーはん：@humhum0808
+            るーろーはん(@humhum0808)
           </motion.p>
           <motion.h3
             className="text-2xl font-bold mt-6"
@@ -81,7 +81,14 @@ export default function Home() {
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 2 }}
           >
-            ゆゆん：@fokachya_y
+            トップイラスト：ゆゆん(@fokachya_y)
+            <br />
+            ファビコン：かっぴー(@kappi0413)
+            <br />
+            ギャラリーイラスト：零（みる）(@yuzuniu4275470/@miru_1024_)
+            <br />
+            ギャラリーイラスト：reーji(@gu_16reji)
+            <br />
           </motion.p>
         </section>
       </main>

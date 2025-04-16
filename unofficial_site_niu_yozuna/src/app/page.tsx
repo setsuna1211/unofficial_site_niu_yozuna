@@ -13,7 +13,7 @@ export default function Home() {
       <motion.section
         id="hero-section"
         style={{ opacity: heroOpacity }}
-        className="top-0 left-0 w-full h-screen flex items-center justify-center z-10 relative"
+        className="top-0 left-0 w-full h-screen flex items-center justify-center z-10 relative mt-14"
       >
         <motion.div
           initial={{ opacity: 0 }}
@@ -25,7 +25,7 @@ export default function Home() {
             src="/banner.png"
             alt="トップ画像"
             fill
-            style={{ objectFit: "cover" }}
+            className="object-cover object-[30%_center]"
           />
         </motion.div>
       </motion.section>
@@ -85,13 +85,22 @@ export default function Home() {
             className="flex flex-col md:text-left text-center items-center"
           >
             <h3 className="text-3xl font-bold mb-2">夜絆ニウ</h3>
-            <p className="text-sm mb-2">誕生日 : 4月27日</p>
-            <p className="text-sm mb-2">血液型 : O型</p>
             <p className="text-sm mb-2">身長 : 142.7cm</p>
+            <p className="text-sm mb-2">誕生日 : 4月27日</p>
+            <p className="text-sm mb-2">年齢 : 200歳</p>
+            <p className="text-sm mb-2">血液型 : O型</p>
             <p className="text-sm mb-2">
-              好きな食べ物 : 焼き鳥、サーモン、家系ラーメン
+              好きな食べ物 : 焼き鳥、サーモン、家系ラーメン等…
             </p>
             <p className="text-base leading-relaxed text-center">
+              逃げたチュータ（ネズミ）を追って異世界からやってきた警備隊長。
+              <br />
+              情報収集のために配信を始めるが、人間界とその文化に興味をもったことで、配信に夢中になる。
+              <br />
+              気まぐれで、悪戯好き。
+              <br />
+              特に考えて話していないため、言語能力が低い。
+              <br />
               ネオポルテの多分かわいい担当！
               <br />
               ちなみによ「づ」なにうである。

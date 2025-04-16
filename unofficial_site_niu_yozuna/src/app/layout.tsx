@@ -7,6 +7,9 @@ const NiuSiteFont = Yusei_Magic({ weight: "400", subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "夜絆ニウ 非公式ファンサイト",
   description: "夜絆ニウの非公式ファンサイトページです。",
+  icons:{
+    icon: "/favicon.png"
+  },
   robots: {
     index: false,
     follow: false,
