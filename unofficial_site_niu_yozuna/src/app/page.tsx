@@ -3,6 +3,10 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import TwitterTimeline from "@/components/XTimeline";
+import NoteRss from "@/components/NoteRss";
+import { DotGothic16 } from "next/font/google";
+
+const NiuSiteTitleFont = DotGothic16({ weight: "400", subsets: ["latin"] });
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
@@ -27,6 +31,13 @@ export default function Home() {
             fill
             className="object-cover object-[30%_center]"
           />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <h1 className={`${NiuSiteTitleFont.className} text-[#6E5BAA] text-4xl md:text-6xl font-extrabold drop-shadow-2xl text-center`}>
+              夜絆ニウ
+              <br />
+              Unofficial Fan Site
+            </h1>
+          </div>
         </motion.div>
       </motion.section>
 
@@ -162,6 +173,16 @@ export default function Home() {
               </motion.a>
             </div>
           </motion.div>
+        </motion.section>
+
+        <motion.section
+          className="py-12"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true, amount: 0.5 }}
+        >
+          <NoteRss />
         </motion.section>
 
         <motion.section

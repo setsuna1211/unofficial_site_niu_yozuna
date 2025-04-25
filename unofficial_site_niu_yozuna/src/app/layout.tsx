@@ -11,8 +11,8 @@ export const metadata: Metadata = {
     icon: "/favicon.png"
   },
   robots: {
-    index: false,
-    follow: false,
+    index: process.env.ROBOTS !== "false",
+    follow: process.env.ROBOTS !== "false",
   },
 };
 

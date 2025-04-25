@@ -9,7 +9,7 @@ export default function Home() {
         id="main-content"
         className="relative z-20 container mx-auto px-4 py-8"
       >
-        {/* Hero Section */}
+
         <section className="text-center py-12">
           <motion.h2
             className="text-4xl font-extrabold mb-4"
@@ -34,6 +34,8 @@ export default function Home() {
             transition={{ duration: 1, delay: 0.5 }}
           >
             夜絆ニウ応援企画(@jjbgNaUvJF40976)
+            <br />
+            ※お問い合わせ等は上記アカウントにお願いします
           </motion.p>
           <motion.h3
             className="text-2xl font-bold mt-6"
