@@ -7,7 +7,7 @@ const parser = new Parser({
   },
 });
 
-export async function fetchNoteRss(url: string) {
+async function fetchNoteRss(url: string) {
   const feed = await parser.parseURL(url);
   return feed.items.map((item) => ({
     title: item.title,
