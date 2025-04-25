@@ -14,6 +14,12 @@ export const metadata: Metadata = {
     index: process.env.ROBOTS !== "false",
     follow: process.env.ROBOTS !== "false",
   },
+  openGraph: {
+    type: "website",
+    images: {
+      url: "/banner.png"
+    }
+  }
 };
 
 export default function RootLayout({
