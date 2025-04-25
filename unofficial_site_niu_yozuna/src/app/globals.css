@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .bg-main {
+    /*@apply bg-gradient-to-r from-[#CA80CB] to-[#E757AE];*/
+    @apply bg-gradient-to-r from-[#6E5BAA] to-[#9C89DB];
+  }
+  .bg-panel {
+    /*@apply bg-[#825F9F] bg-opacity-90;*/
+    @apply bg-[#1A172D] bg-opacity-90;
+  }
+
+  .text-main {
+    /*@apply text-[#E5D1AC];*/
+    @apply text-[#E4D8FC];
+  }
+}
